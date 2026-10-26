@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personalized, evidence-based care provided by [Doctor’s Name], [Credentials and Qualifications] at [Clinic Name]." />
+  <title>[Doctor’s Name], [Credentials and Qualifications] | [Specialty] in [Clinic Address]</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       CSS Variables & Global Reset
+       ========================================================================== */
+    :root {
+      --primary: #17535c;           /* Calming deep teal */
+      --primary-hover: #103c43;
+      --primary-light: #eaf3f4;
+      --accent: #2e8b88;            /* Soft sage-teal */
+      --accent-soft: #f0f7f6;
+      --text-main: #1e293b;         /* Slate 800 */
+      --text-muted: #475569;        /* Slate 600 */
+      --text-light: #64748b;        /* Slate 500 */
+      --bg-body: #fbfdfd;
+      --bg-surface: #ffffff;
+      --bg-subtle: #f4f8f8;
+      --border-color: #e2e8f0;
+      --danger: #b91c1c;
+      --danger-bg: #fef2f2;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+      --warning-border: #fcd34d;
+      --warning-bg: #fffbeb;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 14px rgba(23,83,92,0.08);
+      --shadow-lg: 0 10px 25px rgba(23,83,92,0.12);
+      --max-width: 1200px;
+      --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --transition: all 0.2s ease-in-out;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    a:hover {
+      color: var(--primary-hover);
+    }
+
+    /* Accessibility focus indicators */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Skip link for screen readers */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 1rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      z-index: 1000;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* ==========================================================================
+       Utility & Layout Classes
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-muted {
+      background-color: var(--bg-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 2px 4px rgba(23,83,92,0.2);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .btn-secondary:hover {
+      background-color: var(--primary-light);
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Placeholder styling indication */
+    .editable-token {
+      background-color: rgba(23, 83, 92, 0.06);
+      border-radius: 4px;
+      padding: 0 4px;
+      font-style: normal;
+    }
+
+    /* Urgent Emergency Banner */
+    .emergency-banner {
+      background-color: var(--warning-bg);
+      border-bottom: 1px solid var(--warning-border);
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+      color: #78350f;
+      text-align: center;
+    }
+    .emergency-banner strong {
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       Header & Navigation
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .brand-specialty {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero {
+      padding: 4.5rem 0 5rem;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg-subtle) 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 2.875rem;
+      line-height: 1.2;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+    }
+
+    .hero-lead {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .trust-item h4 {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .trust-item p {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .image-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid #ffffff;
+      background-color: var(--primary-light);
+      position: relative;
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+    }
+
+    .badge-card {
+      position: absolute;
+      bottom: -1.25rem;
+      left: -1.25rem;
+      background: var(--bg-surface);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .badge-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       About & Care Approach
+       ========================================================================== */
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      padding: 2.25rem 2rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background-color: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    /* ==========================================================================
+       Services Section
+       ========================================================================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .service-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+
+    .service-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .service-target {
+      font-size: 0.8125rem;
+      background-color: var(--bg-subtle);
+      padding: 0.75rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .service-target strong {
+      color: var(--text-main);
+    }
+
+    .service-card .btn {
+      align-self: flex-start;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    /* ==========================================================================
+       Specialization Section
+       ========================================================================== */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .spec-text h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .spec-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .spec-box {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .spec-box h4 {
+      font-size: 1.0625rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .spec-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .spec-list li {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .spec-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .consultation-timeline {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .consultation-timeline h4 {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+
+    .step-content h5 {
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       Testimonials Section
+       ========================================================================== */
+    .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quote-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .quote-author-initial {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .quote-author-details h5 {
+      font-size: 0.9375rem;
+      color: var(--text-main);
+    }
+
+    .quote-author-details span {
+      font-size: 0.8125rem;
+      color: var(--text-light);
+    }
+
+    .testimonial-fallback-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    /* ==========================================================================
+       Health Blog Section
+       ========================================================================== */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .blog-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .blog-content {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-light);
+    }
+
+    .blog-card h3 {
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .blog-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .blog-reviewer {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border-color);
+      margin-bottom: 1rem;
+    }
+
+    /* ==========================================================================
+       Booking & Appointment Section
+       ========================================================================== */
+    .booking-wrapper {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .booking-sidebar {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .booking-sidebar h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .booking-sidebar p {
+      color: #d1e5e7;
+      font-size: 0.9375rem;
+      margin-bottom: 2rem;
+    }
+
+    .booking-notes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .booking-notes li {
+      font-size: 0.875rem;
+      color: #f0f7f6;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .booking-notes svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .sidebar-call-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .sidebar-call-box p {
+      margin: 0;
+      color: #ffffff;
+      font-size: 0.875rem;
+    }
+
+    .sidebar-call-box a {
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .booking-form-area {
+      padding: 3rem 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.375rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 0.9375rem;
+      font-family: inherit;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background-color: #ffffff;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(46, 139, 136, 0.15);
+    }
+
+    .form-checkbox {
+      display: flex;
+      gap: 0.625rem;
+      align-items: flex-start;
+      margin-top: 0.5rem;
+    }
+
+    .form-checkbox input {
+      margin-top: 0.25rem;
+    }
+
+    .form-checkbox label {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .form-feedback {
+      display: none;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      margin-top: 1rem;
+    }
+
+    .form-feedback.success {
+      display: block;
+      background-color: var(--success-bg);
+      color: var(--success);
+      border: 1px solid #bbf7d0;
+    }
+
+    /* ==========================================================================
+       Contact & Clinic Info Section
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background-color: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-details h4 {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-details p,
+    .contact-details a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .contact-details a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .map-placeholder {
+      background: var(--bg-subtle);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.875rem;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-form-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ==========================================================================
+       Footer
+       ========================================================================== */
+    .site-footer {
+      background-color: #0b2529;
+      color: #94a3b8;
+      padding: 4.5rem 0 2rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.25fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .footer-col p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-disclaimer-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 2.5rem;
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ==========================================================================
+       Responsive Media Queries
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-grid,
+      .spec-grid,
+      .booking-wrapper,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .services-grid,
+      .about-cards,
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 2.375rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+        gap: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .header-cta-btn {
+        display: none;
+      }
+
+      .services-grid,
+      .about-cards,
+      .testimonial-cards,
+      .blog-grid,
+      .spec-list,
+      .form-group-row,
+      .hero-trust-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .badge-card {
+        position: static;
+        margin-top: 1rem;
+      }
+
+      .image-frame img {
+        height: 340px;
+      }
+
+      .section {
+        padding: 3.5rem 0;
+      }
+
+      .booking-sidebar,
+      .booking-form-area {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen reader accessible jump link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Emergency Notice Banner -->
+  <aside class="emergency-banner" role="complementary" aria-label="Medical Emergency Notice">
+    <div class="container">
+      <strong>Medical Emergency?</strong> If you are experiencing chest pain, difficulty breathing, severe bleeding, or any life-threatening condition, please call <strong>911 / 112</strong> or visit the nearest emergency room immediately.
+    </div>
+  </aside>
+
+  <!-- Persistent Site Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="[Doctor’s Name] - Home">
+        <span class="brand-name">[Doctor’s Name]</span>
+        <span class="brand-specialty">[Specialty] • [Clinic Name]</span>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav id="primaryNav" aria-label="Main Navigation">
+        <ul class="nav-links" id="navLinksList">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#specialization">Specialization</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#blog">Health Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="#booking" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">Book Appointment</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- =======================================================================
+         1. HOME & HERO SECTION
+         ======================================================================= -->
+    <section id="home" class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="section-eyebrow">Compassionate, Patient-Centered Medicine</span>
+          <h1 id="hero-heading">Personalized care for <span class="editable-token">[community or patient need]</span></h1>
+          <p class="hero-lead">
+            Welcome to <span class="editable-token">[Clinic Name]</span>. Led by <span class="editable-token">[Doctor’s Name]</span>, <span class="editable-token">[Credentials and Qualifications]</span>, we are dedicated to providing clear, evidence-based <span class="editable-token">[Specialty]</span> care focused on long-term wellness and mutual trust.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#booking" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Book Appointment
+            </a>
+            <a href="#services" class="btn btn-secondary">Explore Services</a>
+          </div>
+
+          <!-- Trust row with editable placeholders -->
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <h4>[X]+ Years</h4>
+              <p>Clinical experience</p>
+            </div>
+            <div class="trust-item">
+              <h4>[Board Certified]</h4>
+              <p>In <span class="editable-token">[Specialty]</span></p>
+            </div>
+            <div class="trust-item">
+              <h4>[Languages Spoken]</h4>
+              <p>e.g., English, Spanish</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="image-frame">
+            <!-- Professional, friendly healthcare image placeholder -->
+            <img 
+              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80" 
+              alt="Portrait of [Doctor’s Name], [Specialty] physician in a bright, modern clinic office"
+              loading="lazy"
+            />
+          </div>
+          <div class="badge-card" aria-label="Practice status note">
+            <div class="badge-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div>
+              <p style="font-weight: 700; font-size: 0.875rem; color: var(--text-main); margin: 0;">Accepting New Patients</p>
+              <p style="font-size: 0.75rem; color: var(--text-light); margin: 0;">In-person & Telehealth slots available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice Philosophy / Care Approach -->
+    <section class="section" aria-labelledby="approach-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Our Approach to Care</span>
+          <h2 id="approach-heading" class="section-title">A Doctor Who Listens First</h2>
+          <p class="section-desc">We believe thorough care begins with meaningful communication, giving you the time and knowledge needed to make confident health decisions.</p>
+        </div>
+
+        <div class="about-cards">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+            </div>
+            <h3>Unrushed Consultations</h3>
+            <p>We structure our clinic schedule to ensure ample time for questions, comprehensive health evaluations, and shared care planning.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3>Evidence-Based Guidance</h3>
+            <p>Treatment recommendations are grounded in current clinical research, tailored directly to your personal medical background and goals.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3>Coordinated Care</h3>
+            <p>We work in collaboration with your wider care team, specialists, and diagnostic labs to keep your health journey seamless.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         2. SERVICES SECTION
+         ======================================================================= -->
+    <section id="services" class="section section-muted" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Clinical Services</span>
+          <h2 id="services-heading" class="section-title">Patient-Centered Medical Services</h2>
+          <p class="section-desc">Below are examples of clinical services provided at our practice. Please contact our reception team to confirm if a specific service is right for your needs.</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service 1 -->
+          <article class="service-card">
+            <span class="tag" style="margin-bottom: 1rem; align-self: flex-start;">Primary & Consultative</span>
+            <h3>General Consultations</h3>
+            <p class="service-desc">Comprehensive assessments for new health symptoms, non-emergency concerns, or diagnostic evaluations.</p>
+            <div class="service-target">
+              <strong>Relevant for:</strong> Patients seeking a primary medical review or diagnosis for acute, non-urgent symptoms.
+            </div>
+            <a href="#booking" class="btn btn-secondary">Ask About This Service</a>
+          </article>
+
+          <!-- Service 2 -->
+          <article class="service-card">
+            <span class="tag" style="margin-bottom: 1rem; align-self: flex-start;">Prevention</span>
+            <h3>Preventive Wellness Visits</h3>
+            <p class="service-desc">Routine wellness checkups, age-appropriate health screenings, biometric evaluations, and lifestyle medicine guidance.</p>
+            <div class="service-target">
+              <strong>Relevant for:</strong> Individuals wanting to maintain wellness and detect potential health factors early.
+            </div>
+            <a href="#booking" class="btn btn-secondary">Ask About This Service</a>
+          </article>
+
+          <!-- Service 3 -->
+          <article class="service-card">
+            <span class="tag" style="margin-bottom: 1rem; align-self: flex-start;">Continuity</span>
+            <h3>Follow-up & Lab Review</h3>
+            <p class="service-desc">Focused consultations to discuss diagnostic results, adjust prescription therapies, or review symptom response.</p>
+            <div class="service-target">
+              <strong>Relevant for:</strong> Existing patients reviewing bloodwork, imaging, or recently initiated treatment plans.
+            </div>
+            <a href="#booking" class="btn btn-secondary">Ask About This Service</a>
+          </article>
+
+          <!-- Service 4 -->
+          <article class="service-card">
+            <span class="tag" style="margin-bottom: 1rem; align-self: flex-start;">Long-term Care</span>
+            <h3>Chronic Condition Care</h3>
+            <p class="service-desc">Ongoing collaboration and monitoring for ongoing concerns such as hypertension, thyroid regulation, or metabolic health.</p>
+            <div class="service-target">
+              <strong>Relevant for:</strong> Patients requiring regular support, prescription monitoring, and coordinated care.
+            </div>
+            <a href="#booking" class="btn btn-secondary">Ask About This Service</a>
+          </article>
+
+          <!-- Service 5 -->
+          <article class="service-card">
+            <span class="tag" style="margin-bottom: 1rem; align-self: flex-start;">Screening</span>
+            <h3>Health Risk Screenings</h3>
+            <p class="service-desc">Cardiovascular risk profiling, baseline cognitive or metabolic reviews, and coordination with screening centers.</p>
+            <div class="service-target">
+              <strong>Relevant for:</strong> Adults with family history of chronic illness or those establishing new health baselines.
+            </div>
+            <a href="#booking" class="btn btn-secondary">Ask About This Service</a>
+          </article>
+
+          <!-- Service 6 -->
+          <article class="service-card">
+            <span class="tag" style="margin-bottom: 1rem; align-self: flex-start;">Virtual Care</span>
+            <h3>Telehealth Consultations</h3>
+            <p class="service-desc">Secure, video-based appointments for routine follow-ups, medication reviews, and select non-urgent issues.</p>
+            <div class="service-target">
+              <strong>Relevant for:</strong> Established patients eligible for remote review (subject to clinical appropriateness).
+            </div>
+            <a href="#booking" class="btn btn-secondary">Ask About This Service</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         3. SPECIALIZATION SECTION
+         ======================================================================= -->
+    <section id="specialization" class="section" aria-labelledby="spec-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Area of Expertise</span>
+          <h2 id="spec-heading" class="section-title"><span class="editable-token">[Specialty]</span> & Clinical Focus</h2>
+          <p class="section-desc">Understanding our background helps you choose the right care partner for your health journey.</p>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-text">
+            <h3>Specialty Overview</h3>
+            <p>
+              In our practice, <span class="editable-token">[Specialty]</span> centers on understanding each patient holistically. Rather than viewing health concerns in isolation, <span class="editable-token">[Doctor’s Name]</span> evaluates symptoms in context with your history, daily lifestyle, and genetic predispositions.
+            </p>
+
+            <div class="spec-box">
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Qualifications & Credentials
+              </h4>
+              <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">
+                <strong>Primary Medical Degree:</strong> <span class="editable-token">[Medical Degree, University Name, Year]</span>
+              </p>
+              <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">
+                <strong>Residency & Fellowship:</strong> <span class="editable-token">[Institution Name & Specialty Program]</span>
+              </p>
+              <p style="font-size: 0.9rem; margin-bottom: 0.75rem;">
+                <strong>Board Certifications:</strong> <span class="editable-token">[Board / Licensing Authority Name]</span>
+              </p>
+              <p style="font-size: 0.9rem;">
+                <strong>Affiliations:</strong> <span class="editable-token">[Hospital or Medical Association Affiliations]</span>
+              </p>
+            </div>
+
+            <div class="spec-box" style="margin-top: 1.5rem;">
+              <h4>Representative Concerns Evaluated</h4>
+              <ul class="spec-list">
+                <li><span class="editable-token">[Condition Example 1]</span></li>
+                <li><span class="editable-token">[Condition Example 2]</span></li>
+                <li><span class="editable-token">[Condition Example 3]</span></li>
+                <li><span class="editable-token">[Condition Example 4]</span></li>
+              </ul>
+              <p style="font-size: 0.8125rem; color: var(--text-light); margin-top: 1rem; margin-bottom: 0;">
+                <em>Note: Please phone our office to verify if your specific medical circumstance is suited for our clinical scope.</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="consultation-timeline">
+            <h4>What to Expect During Your Consultation</h4>
+            <div class="timeline-steps">
+              <div class="step-item">
+                <div class="step-number" aria-hidden="true">1</div>
+                <div class="step-content">
+                  <h5>Medical History Intake</h5>
+                  <p>A structured conversation reviewing your health milestones, family trends, active medications, and daily wellness habits.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number" aria-hidden="true">2</div>
+                <div class="step-content">
+                  <h5>Clinical Examination</h5>
+                  <p>A gentle, appropriate physical examination tailored directly to your concerns and symptoms.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <div class="step-number" aria-hidden="true">3</div>
+                <div class="step-content">
+                  <h5>Collaborative Plan & Follow-Up</h5>
+                  <p>Clear, unhurried dialogue outlining proposed testing, treatment alternatives, and next milestones in written summary form.</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1.25rem; background-color: var(--primary-light); border-radius: var(--radius-sm);">
+              <p style="font-size: 0.875rem; color: var(--primary); margin: 0;">
+                <strong>Patient Assurance:</strong> You will always receive clear explanations and have every opportunity to ask questions before any decisions are finalized.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         4. TESTIMONIALS SECTION
+         ======================================================================= -->
+    <section id="testimonials" class="section section-muted" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Patient Experiences</span>
+          <h2 id="testimonials-heading" class="section-title">Reflections on Our Care</h2>
+          <p class="section-desc">Patient confidentiality is paramount. Patient comments are shared with express written permission.</p>
+        </div>
+
+        <div class="testimonial-cards">
+          <!-- Testimonial Item 1 -->
+          <article class="testimonial-card">
+            <p class="quote-text">
+              "[Patient testimonial statement describing communication, clinic environment, and doctor attentiveness, published with written consent]."
+            </p>
+            <div class="quote-author">
+              <div class="quote-author-initial" aria-hidden="true">P</div>
+              <div class="quote-author-details">
+                <h5>[First name or anonymous attribution, e.g., Sarah M.]</h5>
+                <span>Patient since <span class="editable-token">[Year]</span> • Verified Patient</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial Item 2 -->
+          <article class="testimonial-card">
+            <p class="quote-text">
+              "[Patient testimonial statement describing unhurried consultations and respect for patient questions, published with written consent]."
+            </p>
+            <div class="quote-author">
+              <div class="quote-author-initial" aria-hidden="true">D</div>
+              <div class="quote-author-details">
+                <h5>[First name or anonymous attribution, e.g., David R.]</h5>
+                <span>Preventive Care Patient • Verified Patient</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="testimonial-fallback-note">
+          Have questions about what care looks like at our practice? Feel welcome to <a href="#contact">call our front office</a> to speak with our staff before booking.
+        </p>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         5. HEALTH BLOG PREVIEW SECTION
+         ======================================================================= -->
+    <section id="blog" class="section" aria-labelledby="blog-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Health Education</span>
+          <h2 id="blog-heading" class="section-title">Recent Clinical Articles & Guides</h2>
+          <p class="section-desc">Educational insights to help you better understand everyday health and preventive habits.</p>
+        </div>
+
+        <div class="blog-grid">
+          <!-- Article 1 -->
+          <article class="blog-card">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="tag">Preventive Health</span>
+                <time datetime="2026-03-15">March 15, 2026</time>
+              </div>
+              <h3>Understanding Routine Blood Panels: A Patient Guide</h3>
+              <p>What common markers like lipid panels, fasting glucose, and complete blood counts actually tell your doctor about your health.</p>
+              <div class="blog-reviewer">
+                Reviewed by <span class="editable-token">[Reviewed by Dr. Name, credentials]</span>
+              </div>
+              <a href="#contact" class="btn btn-secondary" style="align-self: flex-start; font-size: 0.8125rem;">Read Article</a>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="blog-card">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="tag">Cardiovascular</span>
+                <time datetime="2026-02-28">February 28, 2026</time>
+              </div>
+              <h3>Managing Blood Pressure Through Everyday Habits</h3>
+              <p>Practical adjustments in dietary sodium, restful sleep, and physical activity that work alongside medical management.</p>
+              <div class="blog-reviewer">
+                Reviewed by <span class="editable-token">[Reviewed by Dr. Name, credentials]</span>
+              </div>
+              <a href="#contact" class="btn btn-secondary" style="align-self: flex-start; font-size: 0.8125rem;">Read Article</a>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="blog-card">
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="tag">Patient Advocacy</span>
+                <time datetime="2026-01-20">January 20, 2026</time>
+              </div>
+              <h3>Preparing for Your Annual Physical Exam</h3>
+              <p>A simple checklist to organize your questions, symptom diary, and medication records to make the most of your visit.</p>
+              <div class="blog-reviewer">
+                Reviewed by <span class="editable-token">[Reviewed by Dr. Name, credentials]</span>
+              </div>
+              <a href="#contact" class="btn btn-secondary" style="align-self: flex-start; font-size: 0.8125rem;">Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         6. APPOINTMENT BOOKING SECTION
+         ======================================================================= -->
+    <section id="booking" class="section section-muted" aria-labelledby="booking-heading">
+      <div class="container">
+        <div class="booking-wrapper">
+          <div class="booking-sidebar">
+            <div>
+              <span class="tag" style="background: rgba(255,255,255,0.15); color: #fff; margin-bottom: 1rem;">Simple Scheduling</span>
+              <h3 id="booking-heading">Request an Appointment</h3>
+              <p>Submit your preferred time and contact details. Our patient coordinator will review our schedule and contact you to confirm your visit.</p>
+
+              <ul class="booking-notes">
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                  <span><strong>Important:</strong> Submitting this form requests an appointment; it is not confirmed until verified by our staff.</span>
+                </li>
+                <li>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span>Prefer to schedule directly? You can connect to our <a href="[Appointment Booking URL]" style="color:#ffffff; text-decoration: underline;">online scheduling portal</a> or call <span class="editable-token">[Phone Number]</span>.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sidebar-call-box">
+              <p>Need immediate clarification? Reach our desk directly:</p>
+              <a href="tel:[Phone Number]" style="font-size: 1.1rem; display: block; margin-top: 0.25rem;">[Phone Number]</a>
+            </div>
+          </div>
+
+          <div class="booking-form-area">
+            <form id="appointmentRequestForm" novalidate aria-label="Appointment request form">
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="patientFirstName">First Name *</label>
+                  <input type="text" id="patientFirstName" name="patientFirstName" required placeholder="e.g., Eleanor" />
+                </div>
+                <div class="form-group">
+                  <label for="patientLastName">Last Name *</label>
+                  <input type="text" id="patientLastName" name="patientLastName" required placeholder="e.g., Vance" />
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="patientPhone">Phone Number *</label>
+                  <input type="tel" id="patientPhone" name="patientPhone" required placeholder="(555) 000-0000" />
+                </div>
+                <div class="form-group">
+                  <label for="patientEmail">Email Address *</label>
+                  <input type="email" id="patientEmail" name="patientEmail" required placeholder="eleanor@example.com" />
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <div class="form-group">
+                  <label for="appointmentType">Appointment Format *</label>
+                  <select id="appointmentType" name="appointmentType" required>
+                    <option value="" disabled selected>Select format</option>
+                    <option value="in-person">In-Person Visit (at clinic)</option>
+                    <option value="telehealth">Telehealth / Virtual Consultation</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="preferredDate">Preferred Date *</label>
+                  <input type="date" id="preferredDate" name="preferredDate" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="visitReason">Brief Reason for Visit (Non-Sensitive) *</label>
+                <select id="visitReason" name="visitReason" required>
+                  <option value="" disabled selected>Select reason</option>
+                  <option value="new-patient">New Patient Consultation</option>
+                  <option value="routine-checkup">Routine Checkup / Wellness Exam</option>
+                  <option value="followup">Follow-up on Previous Lab/Plan</option>
+                  <option value="other">General Medical Inquiry</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <div class="form-checkbox">
+                  <input type="checkbox" id="bookingConsent" name="bookingConsent" required />
+                  <label for="bookingConsent">
+                    I understand this is a request only and will be confirmed by phone or email. I acknowledge this form is not intended for urgent medical emergencies.
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" style="padding: 0.9rem;">
+                Submit Appointment Request
+              </button>
+
+              <div id="bookingFeedback" class="form-feedback" role="alert"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         7. CONTACT & LOCATION SECTION
+         ======================================================================= -->
+    <section id="contact" class="section" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Connect With Us</span>
+          <h2 id="contact-heading" class="section-title">Clinic Location & Inquiries</h2>
+          <p class="section-desc">Have a question regarding insurance, records, or scheduling? We are here to help during standard office hours.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <h3>Clinic Information</h3>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">
+              We welcome inquiries from new and established patients. Please do not send private health records or acute medical concerns via email.
+            </p>
+
+            <div class="contact-info-list">
+              <!-- Address -->
+              <div class="contact-item">
+                <div class="contact-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="contact-details">
+                  <h4>Clinic Address</h4>
+                  <p><span class="editable-token">[Clinic Name]</span><br /><span class="editable-token">[Clinic Address]</span></p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="contact-item">
+                <div class="contact-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div class="contact-details">
+                  <h4>Telephone</h4>
+                  <p><a href="tel:[Phone Number]"><span class="editable-token">[Phone Number]</span></a></p>
+                  <span style="font-size: 0.8125rem; color: var(--text-light);">Tap to call our reception</span>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="contact-item">
+                <div class="contact-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="contact-details">
+                  <h4>Email</h4>
+                  <p><a href="mailto:[Email Address]"><span class="editable-token">[Email Address]</span></a></p>
+                </div>
+              </div>
+
+              <!-- Office Hours -->
+              <div class="contact-item">
+                <div class="contact-icon-wrap" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                </div>
+                <div class="contact-details">
+                  <h4>Office Hours</h4>
+                  <p><span class="editable-token">[Office Hours, e.g., Mon–Fri: 8:30 AM – 5:00 PM]</span></p>
+                  <p style="font-size: 0.8125rem; color: var(--text-light);">Closed weekends & statutory holidays</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accessibility & Parking notes -->
+            <div style="margin-top: 1.5rem; font-size: 0.875rem; color: var(--text-muted); background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-sm);">
+              <strong>Accessibility & Parking:</strong> Ground-level entrance with wheelchair ramp. Dedicated patient parking is available at the rear of the building, accessible via <span class="editable-token">[Street Name / Transit Details]</span>.
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="map-placeholder" aria-label="Interactive map placeholder">
+              <div>
+                <strong>[Interactive Map Integration Point]</strong>
+                <p>Embed Google Maps or clinic location iframe here</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- General Inquiries Form -->
+          <div class="contact-form-card">
+            <h3 style="font-size: 1.35rem; color: var(--primary); margin-bottom: 0.5rem;">Send a General Inquiry</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+              For administrative questions, accepted insurances, or record requests.
+            </p>
+
+            <form id="generalInquiryForm" novalidate aria-label="General inquiry form">
+              <div class="form-group">
+                <label for="contactFullName">Your Full Name *</label>
+                <input type="text" id="contactFullName" name="contactFullName" required placeholder="e.g., Alex Bennett" />
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmailOrPhone">Email or Phone Number *</label>
+                <input type="text" id="contactEmailOrPhone" name="contactEmailOrPhone" required placeholder="contact@example.com or (555) 000-0000" />
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage">How can we assist you? *</label>
+                <textarea id="contactMessage" name="contactMessage" rows="4" required placeholder="Please do not include sensitive medical diagnoses or test results in this form..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <div class="form-checkbox">
+                  <input type="checkbox" id="contactPrivacyConsent" name="contactPrivacyConsent" required />
+                  <label for="contactPrivacyConsent">
+                    I consent to having <span class="editable-token">[Clinic Name]</span> contact me regarding this message. I understand this form is for non-clinical inquiries.
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-secondary btn-block">Send Message</button>
+              <div id="contactFormFeedback" class="form-feedback" role="alert"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       SITE FOOTER
+       ======================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <!-- Formal Medical Disclaimer -->
+      <div class="footer-disclaimer-box">
+        <strong>Medical Disclaimer:</strong> The content on this website is provided solely for educational and informational purposes. It is not intended as medical advice, clinical diagnosis, or a substitute for personal consultation with a qualified medical professional. Using this site or contacting the practice through online forms does not create a physician-patient relationship. In the event of a medical emergency, call 911 / 112 or contact emergency healthcare services right away.
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 style="color:#ffffff;">[Doctor’s Name]</h4>
+          <p><span class="editable-token">[Credentials and Qualifications]</span></p>
+          <p><span class="editable-token">[Specialty]</span> care providing evidence-grounded treatment for <span class="editable-token">[Clinic Address]</span> and surrounding communities.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#specialization">Specialization</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#blog">Health Articles</a></li>
+            <li><a href="#booking">Book Appointment</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Office & Hours</h4>
+          <p><span class="editable-token">[Clinic Address]</span></p>
+          <p><span class="editable-token">[Office Hours]</span></p>
+          <p>Phone: <a href="tel:[Phone Number]" style="color: #cbd5e1;"><span class="editable-token">[Phone Number]</span></a></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <p>Follow our educational updates and clinic announcements:</p>
+          <ul class="footer-links">
+            <li><a href="[Social Media Links]" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></li>
+            <li><a href="[Social Media Links]" target="_blank" rel="noopener noreferrer">Clinic Updates</a></li>
+            <li><a href="#privacy">Privacy Practices Policy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear">2026</span> <span class="editable-token">[Clinic Name]</span>. All rights reserved.</p>
+        <p>
+          <a href="#privacy" style="color: #94a3b8; text-decoration: underline;">Notice of Privacy Practices (HIPAA)</a>
+          <span style="margin: 0 0.5rem;">•</span>
+          <a href="#terms" style="color: #94a3b8; text-decoration: underline;">Terms of Use</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =======================================================================
+       JAVASCRIPT FUNCTIONALITY
+       ======================================================================= -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Set current year dynamically in footer
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // 2. Mobile navigation drawer toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.getElementById('navLinksList');
+
+      if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener('click', () => {
+          const isExpanded = mobileBtn.getAttribute('aria-expanded') === 'true';
+          mobileBtn.setAttribute('aria-expanded', !isExpanded);
+          navLinks.classList.toggle('active');
+        });
+
+        // Close menu on navigation click (mobile UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // 3. Appointment Form Request Handler (Simulation & front-end validation)
+      const bookingForm = document.getElementById('appointmentRequestForm');
+      const bookingFeedback = document.getElementById('bookingFeedback');
+
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          if (!bookingForm.checkValidity()) {
+            bookingFeedback.className = 'form-feedback';
+            bookingFeedback.style.display = 'block';
+            bookingFeedback.style.backgroundColor = 'var(--danger-bg)';
+            bookingFeedback.style.color = 'var(--danger)';
+            bookingFeedback.style.border = '1px solid #fecaca';
+            bookingFeedback.textContent = 'Please fill out all required fields and accept the confirmation checkbox.';
+            return;
+          }
+
+          const firstName = document.getElementById('patientFirstName').value.trim();
+          const phone = document.getElementById('patientPhone').value.trim();
+
+          // Success confirmation state
+          bookingFeedback.className = 'form-feedback success';
+          bookingFeedback.innerHTML = `
+            <strong>Thank you, ${firstName}!</strong><br />
+            Your request has been forwarded to our patient reception team. We will call you at <strong>${phone}</strong> during clinic hours to finalize your appointment time.
+            <br /><br />
+            <em>Integration Note: Connect this form to an EHR scheduler (e.g., Epic, Athena, or Calendly) via [Appointment Booking URL].</em>
+          `;
+
+          bookingForm.reset();
+        });
+      }
+
+      // 4. General Inquiry Form Handler
+      const inquiryForm = document.getElementById('generalInquiryForm');
+      const inquiryFeedback = document.getElementById('contactFormFeedback');
+
+      if (inquiryForm) {
+        inquiryForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          if (!inquiryForm.checkValidity()) {
+            inquiryFeedback.className = 'form-feedback';
+            inquiryFeedback.style.display = 'block';
+            inquiryFeedback.style.backgroundColor = 'var(--danger-bg)';
+            inquiryFeedback.style.color = 'var(--danger)';
+            inquiryFeedback.style.border = '1px solid #fecaca';
+            inquiryFeedback.textContent = 'Please complete all required fields and accept the consent checkbox.';
+            return;
+          }
+
+          inquiryFeedback.className = 'form-feedback success';
+          inquiryFeedback.innerHTML = `
+            <strong>Message Received!</strong> Our front desk will review your inquiry within 1–2 business days. If this is an urgent matter, please call our clinic directly.
+          `;
+
+          inquiryForm.reset();
+        });
+      }
+
+      // 5. Restrict Appointment Date Picker to Tomorrow onwards
+      const datePicker = document.getElementById('preferredDate');
+      if (datePicker) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const yyyy = tomorrow.getFullYear();
+        const mm = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const dd = String(tomorrow.getDate()).padStart(2, '0');
+        datePicker.min = `${yyyy}-${mm}-${dd}`;
+      }
+    });
+  </script>
+</body>
+</html>
